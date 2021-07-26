@@ -1,12 +1,23 @@
 # Linux Kernel Module for Disable CPU Cache
 
-Disable all the cpu cache (L1, L2 and L3)
+Disable all the intel's cpu caches (L1, L2 and L3)
 
 ## How to Use?
 
 ### to disable cache
+
 ``` shell
+# install linux header files
+sudo apt install linux-headers-$(uname -r)
+
+# clone code
+git clone git@github.com:HongshiTan/disable_cache.git
+
+# compile the kernel module
+cd disable_cache
 make
+
+# install the module
 sudo insmod disable_cache.ko
 ```
 
@@ -14,5 +25,8 @@ sudo insmod disable_cache.ko
 
 ``` shell
 sudo rmmod disable_cache
-# I would suggest reboot the computer
+# I would suggest to reboot the computer.
+# Disabling the cache would have influence on interrupt handling and make the critical phase much longer.
 ```
+## Reference
+[How can the L1, L2, L3 CPU caches be turned off on modern x86/amd64 chips?](https://stackoverflow.com/questions/48360238/how-can-the-l1-l2-l3-cpu-caches-be-turned-off-on-modern-x86-amd64-chips)
