@@ -4,17 +4,13 @@
 MODULE_LICENSE("Dual BSD/GPL");
 static int disable_cache_init(void)
 {
-
         printk(KERN_ALERT "Disabling L1 and L2 caches.\n");
         stac();
         barrier_nospec();
+        write_cr0(read_cr0() | (1 << 30));
+        printk(KERN_ALERT "cr0 0x%32lx\n",read_cr0());
         __asm__(".att_syntax noprefix\n\t"
-                "movq    cr0,rax\n\t"
-                "or      (1 << 30),rax\n\t"
-                "movq    rax,cr0\n\t"
-                "wbinvd\n\t"
-                ".att_syntax noprefix\n\t"
-        : : : "rax" );
+                "wbinvd\n\t");
         clac();
         return 0;
 }
@@ -24,13 +20,10 @@ static void disable_cache_exit(void)
         printk(KERN_ALERT "Enabling L1 and L2 caches.\n");
         stac();
         barrier_nospec();
+        write_cr0(read_cr0() & (~(1 << 30)));
         __asm__(".att_syntax noprefix\n\t"
-                "movq    cr0,rax\n\t"
-                "and     (~(1 << 30)),rax\n\t"
-                "movq    rax,cr0\n\t"
-                "wbinvd\n\t"
-                ".att_syntax noprefix\n\t"
-        : : : "rax" );
+                "wbinvd\n\t");
+        printk(KERN_ALERT "cr0 0x%32lx\n",read_cr0());
         clac();
 }
 module_init(disable_cache_init);

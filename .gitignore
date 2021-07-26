@@ -1,0 +1,13 @@
+.Module.symvers.cmd
+.disable_cache.ko.cmd
+.disable_cache.mod.cmd
+.disable_cache.mod.o.cmd
+.disable_cache.o.cmd
+.modules.order.cmd
+Module.symvers
+disable_cache.ko
+disable_cache.mod
+disable_cache.mod.c
+disable_cache.mod.o
+disable_cache.o
+modules.order
