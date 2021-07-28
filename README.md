@@ -1,6 +1,8 @@
 # Linux Kernel Module for Disabling Intel's CPU Caches
 
 Disable all the intel's cpu caches (L1, L2 and L3)
+* Temporarily disable the supervisor mode access prevention, so that it can work with Linux kernel 5.0+.
+* The operation on CR0 is executed on all smp cores. 
 
 ## How to Use?
 
