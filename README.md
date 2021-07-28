@@ -1,4 +1,4 @@
-# Linux Kernel Module for Disable CPU Cache
+# Linux Kernel Module for Disabling Intel's CPU Caches
 
 Disable all the intel's cpu caches (L1, L2 and L3)
 
