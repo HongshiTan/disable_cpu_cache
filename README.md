@@ -27,8 +27,6 @@ sudo insmod disable_cache.ko
 
 ``` shell
 sudo rmmod disable_cache
-# I would suggest to reboot the computer.
-# Disabling the cache would have influence on interrupt handling and make the critical phase much longer.
 ```
 ## Reference
 [How can the L1, L2, L3 CPU caches be turned off on modern x86/amd64 chips?](https://stackoverflow.com/questions/48360238/how-can-the-l1-l2-l3-cpu-caches-be-turned-off-on-modern-x86-amd64-chips)
